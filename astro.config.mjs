@@ -10,8 +10,6 @@ import react from '@astrojs/react'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://vrdhsbn.github.io/',
-  base: '/astro-tutorial-ssg-using-api',
   build: {
     format: 'directory',
   },
