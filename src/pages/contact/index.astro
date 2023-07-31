@@ -1,0 +1,125 @@
+---
+import Layout from '@/layouts/Layout.astro'
+
+const description =
+  'Astroで構築したテストサイトです。お問い合わせはこちらからどうぞ。'
+---
+
+<Layout title="お問い合わせ" description={description}>
+  <h2 class="headings">Contact</h2>
+  <div class="form-container">
+    <form action="#">
+      <table>
+        <tr>
+          <th>お名前</th>
+          <td>
+            <input type="text" />
+          </td>
+        </tr>
+        <tr>
+          <th>性別</th>
+          <td>
+            <label>
+              <input type="radio" name="gender" id="" /> 男性
+            </label>
+            <label>
+              <input type="radio" name="gender" id="" /> 女性
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <th>備考</th>
+          <td>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input type="button" value="送信" class="button-submit js-submit" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .form-container {
+    margin-top: 32px;
+
+    th {
+      width: 140px;
+      font-weight: 400;
+      vertical-align: middle;
+    }
+
+    th,
+    td {
+      font-size: 1.6rem;
+      padding: 12px 8px;
+    }
+
+    tr:last-of-type td {
+      text-align: center;
+    }
+
+    input[type='text'] {
+      width: 300px;
+      border: solid 1px #ccc;
+      padding: 8px;
+    }
+
+    input[type='radio'] {
+      width: 16px;
+      height: 16px;
+      border: solid 1px #ccc;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    input[type='radio']:checked::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #3636a0;
+    }
+
+    label {
+      cursor: pointer;
+    }
+
+    label:not(:first-of-type) {
+      margin-left: 16px;
+    }
+
+    textarea {
+      width: 300px;
+      border: solid 1px #ccc;
+      padding: 8px;
+    }
+
+    .button-submit {
+      width: 120px;
+      height: 48px;
+      border: solid 1px #ccc;
+      font-size: 1.4rem;
+      text-align: center;
+    }
+
+    .button-submit:active {
+      margin-top: 1px;
+      margin-left: 1px;
+    }
+  }
+</style>
+
+<script>
+  $('.js-submit').on('click', function () {
+    alert('送信しました！')
+  })
+</script>

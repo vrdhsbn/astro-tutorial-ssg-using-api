@@ -1,0 +1,45 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { companyInfo } from '@/lib/companyInfo'
+
+const description = 'Astroで構築したテストサイトです。会社概要ページはこちら。'
+---
+
+<Layout title="会社情報" description={description}>
+  <h2 class="headings">Company</h2>
+  <table class="company-table">
+    {
+      companyInfo.map((row) => (
+        <tr>
+          <th>{row.th}</th>
+          <td>{row.td}</td>
+        </tr>
+      ))
+    }
+  </table>
+</Layout>
+
+<style lang="scss">
+  .company-table {
+    margin-top: 32px;
+    border-collapse: separate;
+    border-spacing: 3px;
+
+    th {
+      width: 140px;
+      font-weight: 400;
+      background: #ccc;
+    }
+
+    td {
+      width: 240px;
+      background: #eee;
+    }
+
+    th,
+    td {
+      font-size: 1.6rem;
+      padding: 12px 8px;
+    }
+  }
+</style>

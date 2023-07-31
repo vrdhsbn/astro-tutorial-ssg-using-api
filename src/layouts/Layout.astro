@@ -1,0 +1,56 @@
+---
+import 'destyle.css'
+import '@/styles/global.scss'
+import Header from '@/components/Header.astro'
+import Footer from '@/components/Footer.astro'
+import BannerArea from '@/components/BannerArea.astro'
+const { title, description } = Astro.props
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <!-- 共通ヘッダ -->
+    <Header />
+
+    <!-- 固有コンテンツ -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- 共通コンテンツ -->
+    <BannerArea />
+
+    <!-- 共通フッタ -->
+    <Footer />
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    >
+    </script>
+
+    <script>
+      // jQueryが動くかどうかテスト
+      $('.js-hamburger').on('click', function () {
+        $(this).toggleClass('is-open')
+        $('nav').toggleClass('is-open')
+      })
+    </script>
+  </body>
+</html>
+
+<style lang="scss">
+  main {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 64px 40px;
+  }
+</style>

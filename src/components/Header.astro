@@ -1,0 +1,104 @@
+---
+import GlobalNav from './GlobalNav.astro'
+import { menuItems } from '@/lib/menuItems'
+---
+
+<header>
+  <h1><a href="/">Astroテストサイト</a></h1>
+  <div class="menu-container">
+    <ul class="menu">
+      {
+        menuItems.map((item) => (
+          <li>
+            <a href={`${item.href}`}>{item.label}</a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="hamburger js-hamburger">
+      <span class="line line1"></span>
+      <span class="line line2"></span>
+      <span class="line line3"></span>
+    </div>
+  </div>
+
+  <!-- グロナビ -->
+  <GlobalNav />
+</header>
+
+<style lang="scss">
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 64px;
+    height: 80px;
+    background: #dedede;
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .menu-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+
+      li {
+        font-size: 1.6rem;
+      }
+    }
+
+    .hamburger {
+      width: 16px;
+      height: 12px;
+      cursor: pointer;
+      position: relative;
+
+      .line {
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: solid 1px #000;
+        position: absolute;
+
+        &.line1 {
+          top: 0;
+        }
+
+        &.line2 {
+          top: 5px;
+        }
+
+        &.line3 {
+          bottom: 0;
+        }
+      }
+
+      &.is-open {
+        .line1 {
+          transform: rotate(45deg);
+          top: 6px;
+        }
+
+        .line2 {
+          display: none;
+        }
+
+        .line3 {
+          transform: rotate(-45deg);
+          bottom: 4px;
+        }
+      }
+    }
+  }
+</style>

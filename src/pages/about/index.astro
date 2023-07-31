@@ -1,0 +1,20 @@
+---
+import Layout from '@/layouts/Layout.astro'
+
+const description = 'Astroで構築したテストサイトです。'
+---
+
+<Layout title="アバウトページ" description={description}>
+  <h2 class="headings">About</h2>
+  <p class="text mt1">Astroで構築したテストサイトです。</p>
+</Layout>
+
+<style lang="scss">
+  .text {
+    font-size: 1.6rem;
+  }
+
+  .mt1 {
+    margin-top: 16px;
+  }
+</style>

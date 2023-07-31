@@ -1,0 +1,41 @@
+---
+
+---
+
+<div class="banner-area">
+  <a href="#" class="banner-item">
+    <img src="/images/banner1.jpg" alt="" />
+    <p class="title">特集1</p>
+  </a>
+  <a href="#" class="banner-item">
+    <img src="/images/banner2.jpg" alt="" />
+    <p class="title">特集2</p>
+  </a>
+  <a href="#" class="banner-item">
+    <img src="/images/banner3.jpg" alt="" />
+    <p class="title">特集3</p>
+  </a>
+</div>
+
+<style lang="scss">
+  .banner-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    background: #f0f0f0;
+    padding: 64px 64px;
+    margin-top: 32px;
+
+    .banner-item {
+      &:hover {
+        opacity: 0.7;
+      }
+
+      .title {
+        font-size: 1.4rem;
+        margin-top: 8px;
+      }
+    }
+  }
+</style>

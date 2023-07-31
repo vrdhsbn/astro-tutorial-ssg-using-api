@@ -1,0 +1,37 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { getPosts } from '@/lib/getPosts'
+
+export async function getStaticPaths() {
+  const posts = await getPosts()
+
+  return posts.map((post) => {
+    return {
+      params: { slug: post.id },
+      props: { post },
+    }
+  })
+}
+
+const { post } = Astro.props
+---
+
+<Layout title={post.title}>
+  <div class="article-detail">
+    <h2 class="headings">{post.title}</h2>
+    <img src="/images/dummy.png" alt="" class="image-main" />
+    <p class="content">{post.body}</p>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .image-main {
+    display: block;
+    margin: 32px auto;
+  }
+
+  .content {
+    font-size: 1.6rem;
+    line-height: 1.7;
+  }
+</style>

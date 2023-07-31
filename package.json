@@ -7,9 +7,26 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format": "html-beautify 'dist/*.html' 'dist/**/*.html'"
   },
   "dependencies": {
-    "astro": "^2.9.2"
+    "@astrojs/react": "^2.2.1",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "astro": "^2.9.2",
+    "axios": "^1.4.0",
+    "destyle.css": "^4.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "sass": "^1.64.1",
+    "swiper": "^10.0.4"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.16",
+    "astro-compress": "^1.1.49",
+    "js-beautify": "^1.14.9",
+    "prettier": "^3.0.0",
+    "prettier-plugin-astro": "^0.11.0"
   }
 }
