@@ -1,0 +1,104 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { getPosts } from '@/lib/getPosts'
+
+export async function getStaticPaths({ paginate }) {
+  const posts = await getPosts()
+  return paginate(posts, { pageSize: 6 })
+}
+
+const { page } = Astro.props
+
+const description = 'Astroで構築したテストサイトです。ブログの一覧ページです。'
+---
+
+<Layout title="ブログ一覧" description={description}>
+  <h2 class="headings">Blog</h2>
+
+  <div class="article-container">
+    {
+      // page.dataにスライスされたデータが格納されている
+      page.data.map((item) => (
+        <a href={`/blog/${item.id}`} class="article">
+          <img src="/images/dummy.png" alt="" />
+          <p class="title">{item.title}</p>
+        </a>
+      ))
+    }
+  </div>
+
+  <nav class="pagination">
+    <p>page {page.currentPage}/{page.lastPage}</p>
+    <ul class="link-container">
+      {
+        page.url.prev && (
+          <li class="link-prev">
+            <a href={page.url.prev}>&lt; PREV</a>
+          </li>
+        )
+      }
+      {
+        page.url.next && (
+          <li class="link-next">
+            <a href={page.url.next}>NEXT &gt;</a>
+          </li>
+        )
+      }
+    </ul>
+  </nav>
+</Layout>
+
+<style lang="scss">
+  @use '@/styles/mixin' as *;
+
+  .article-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 24px;
+    margin-top: 32px;
+
+    @include sm {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .article {
+      display: block;
+
+      img {
+        width: 100%;
+      }
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      .title {
+        font-size: 1.6rem;
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .pagination {
+    font-size: 1.6rem;
+    margin-top: 48px;
+    width: 100%;
+
+    p {
+      text-align: center;
+    }
+
+    .link-container {
+      display: flex;
+      margin-top: 8px;
+    }
+
+    .link-prev {
+      margin-right: auto;
+    }
+
+    .link-next {
+      margin-left: auto;
+    }
+  }
+</style>
