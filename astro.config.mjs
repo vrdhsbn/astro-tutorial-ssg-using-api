@@ -41,4 +41,8 @@ export default defineConfig({
       },
     },
   },
+  // SPA mode を有効にする
+  experimental: {
+    viewTransitions: true,
+  },
 })
