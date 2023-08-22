@@ -31,7 +31,7 @@ export default defineConfig({
           chunkFileNames: 'assets/scripts/[name].js',
           assetFileNames: (asset) => {
             if (/\.css$/.test(asset.name ?? '')) {
-              return 'assets/css/style[extname]'
+              return 'assets/css/style.[hash][extname]'
             } else if (/\.(jpe?g|png|svg)$/.test(asset.name)) {
               return 'assets/images/[name].[ext]'
             }
